@@ -32,14 +32,14 @@ func DollarExchangeHandler(w http.ResponseWriter, r *http.Request) {
 	exchange, err := doRequest()
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
-		json.NewEncoder(w).Encode(err)
+		json.NewEncoder(w).Encode(err.Error())
 		return
 	}
 
 	err = doSave(exchange)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
-		json.NewEncoder(w).Encode(err)
+		json.NewEncoder(w).Encode(err.Error())
 		return
 	}
 
