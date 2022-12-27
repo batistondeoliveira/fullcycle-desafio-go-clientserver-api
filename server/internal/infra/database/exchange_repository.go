@@ -3,6 +3,7 @@ package database
 import (
 	"context"
 	"database/sql"
+	"log"
 
 	"github.com/batistondeoliveira/fullcycle_desafio_go_client_server_api/server/internal/_shared/constants"
 	"github.com/batistondeoliveira/fullcycle_desafio_go_client_server_api/server/internal/exchange/entity"
@@ -56,6 +57,7 @@ func (r *ExchangeRepository) Save(exchange *entity.Exchange) error {
 		exchange.CreateDate,
 	)
 	if err != nil {
+		log.Printf("BD Exception: %s", err.Error())
 		return err
 	}
 

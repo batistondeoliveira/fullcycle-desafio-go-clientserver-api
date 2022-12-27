@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"io"
+	"log"
 	"net/http"
 
 	"github.com/batistondeoliveira/fullcycle_desafio_go_client_server_api/server/internal/_shared/constants"
@@ -41,6 +42,7 @@ func DollarExchangeRequest() (*Exchange, error) {
 
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
+		log.Printf("Request Exception: %s", err.Error())
 		return nil, err
 	}
 	defer res.Body.Close()
